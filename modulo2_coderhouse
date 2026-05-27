@@ -1,0 +1,50 @@
+-- CREACION DE LA BASE DE DATOS
+CREATE DATABASE Mi_empresa;
+USE Mi_empresa;
+
+-- CREO EL ESQUEMA VENTAS
+CREATE SCHEMA VENTAS;
+
+-- CREO LA TABLA CLIENTE DENTRO DEL ESQUEMA VENTAS CON SUS ATRIBUTOS
+CREATE TABLE VENTAS.CLIENTE (
+	dni INT PRIMARY KEY,  -- dni como primary key
+	nombre VARCHAR(50),
+	apellido VARCHAR(100),
+	fecha_registro DATE
+);
+
+--LCREO LA TABLA PRODUCTOS DENTRO DEL ESQUEMA VENTAS CON SUS ATRIBUTOS
+CREATE TABLE VENTAS.PRODUCTOS(
+	id_producto INT PRIMARY KEY,-- id_producto como PK
+	nombre_producto VARCHAR (100) NOT NULL, --nombre es obligatorio
+	fecha_elaboracion DATE,
+	fecha_vencimiento DATE NOT NULL
+);
+
+--CREO EL ESQUEMA LOGISTICA
+CREATE SCHEMA LOGISTICA;
+
+--CREO LA TABLA DEL ESQUEMA LOGISTICA
+CREATE TABLE LOGISTICA.TRANSPORTISTAS(
+	dni_chofer INT PRIMARY KEY, -- dni_chofer es el atributo identificador de la tabla
+	nombre varchar (50),
+	apellido varchar (70),
+	sueldo decimal
+);
+
+--CREO EL ESQUEMA MARKETING
+CREATE SCHEMA MARKETING;
+
+-- CREO LA TABLA DEL ESQUEMA MARKETING CON SUS ATRIBUTOS
+CREATE TABLE marketing.campañas(
+	id_campaña INT PRIMARY KEY,
+	nombre_campaña VARCHAR (100),
+	descripcion TEXT,
+	presupuesto DECIMAL
+);
+
+--  Modificación de la tabla campañas: se agrega NOT NULL al nombre de campaña
+ALTER TABLE MARKETING.CAMPAÑAS 
+ALTER COLUMN nombre_campaña VARCHAR (100) NOT NULL;
+
+
